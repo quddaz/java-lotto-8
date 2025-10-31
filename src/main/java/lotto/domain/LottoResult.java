@@ -16,6 +16,7 @@ public class LottoResult {
     public LottoResult(Lottos lottos, WinningLotto winningLotto) {
         this.rankCountMap = new EnumMap<>(LottoRank.class);
         calculateResults(lottos, winningLotto);
+        rankCountMap.remove(LottoRank.MISS);
     }
 
     private void calculateResults(Lottos lottos, WinningLotto winningLotto) {
@@ -27,18 +28,20 @@ public class LottoResult {
     }
 
     public double calculateReward() {
-        long totalReward = 0;
-        for(EnumMap.Entry<LottoRank, Integer> entry : rankCountMap.entrySet()){
-            LottoRank rank = entry.getKey();
-            int count = entry.getValue();
-            totalReward += rank.getWinningMoney() * count;
-        }
-        return ((double) totalReward / (getLottoCount() * LottoBuyConfig.LOTTO_PRICE.getValue())) * 100;
+        long totalReward = getTotalWinningMoney();
+        int totalLottoCount = getTotalLottoCount();
+        return  (double) totalReward / (totalLottoCount * LottoBuyConfig.LOTTO_PRICE.getValue()) * 100;
     }
 
-    private int getLottoCount(){
-        return rankCountMap.values().stream().mapToInt(Integer::intValue).sum();
+    private long getTotalWinningMoney() {
+        return rankCountMap.entrySet().stream()
+            .mapToLong(e -> e.getKey().getWinningMoney() * e.getValue())
+            .sum();
     }
-
+    private int getTotalLottoCount() {
+        return rankCountMap.values().stream()
+            .mapToInt(Integer::intValue)
+            .sum();
+    }
 }
 
