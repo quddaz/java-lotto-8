@@ -1,10 +1,9 @@
 package lotto;
 
-import lotto.domain.LottoResult;
+import lotto.domain.result.LottoResult;
 import lotto.domain.buy.LottoBuyMoney;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
-import lotto.exception.LottoDomainException;
 import lotto.generator.LottoNumberGenerator;
 import lotto.validator.WinningLottoNumberValidator;
 import lotto.view.InputView;
@@ -25,16 +24,12 @@ public class LottoStarter {
     }
 
     public void run() {
-        try {
-            LottoBuyMoney purchaseAmount = getPurchaseAmount();
-            Lottos lottos = generateLottos(purchaseAmount);
-            WinningLotto winningLotto = getWinningLotto();
+        LottoBuyMoney purchaseAmount = getPurchaseAmount();
+        Lottos lottos = generateLottos(purchaseAmount);
+        WinningLotto winningLotto = getWinningLotto();
 
-            LottoResult lottoResult = calculateResult(lottos, winningLotto);
-            printResult(lottoResult);
-        } catch (LottoDomainException e) {
-            System.out.println(e.getMessage());
-        }
+        LottoResult lottoResult = calculateResult(lottos, winningLotto);
+        printResult(lottoResult);
     }
 
     private LottoBuyMoney getPurchaseAmount() {

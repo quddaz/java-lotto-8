@@ -8,11 +8,8 @@ import java.util.Collections;
 import java.util.List;
 
 
-// DIP 적용한 LottoNumberGenerator 구현체
+// DIP 적용한 전략 패턴 성격의 LottoNumberGenerator 구현체
 public class RandomLottoNumberGenerator implements LottoNumberGenerator {
-
-    public RandomLottoNumberGenerator() {
-    }
 
     @Override
     public List<Integer> generate() {
