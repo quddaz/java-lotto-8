@@ -4,11 +4,9 @@ import lotto.domain.lotto.Lottos;
 
 public class LottoManager {
     private final Lottos lottos;
-    private final int purchaseCount;
     private static final String DEFAULT_DELIMITER = "\n";
-    public LottoManager(Lottos lottos, int purchaseCount) {
+    public LottoManager(Lottos lottos) {
         this.lottos = lottos;
-        this.purchaseCount = purchaseCount;
     }
 
     public String lottoNumber() {
