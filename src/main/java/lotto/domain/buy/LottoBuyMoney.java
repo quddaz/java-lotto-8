@@ -6,10 +6,8 @@ import lotto.validator.LottoBuyMoneyValidator;
 public class LottoBuyMoney {
     private final int amount;
 
-
-    public LottoBuyMoney(int amount) {
-        LottoBuyMoneyValidator.validateAmount(amount);
-        this.amount = amount;
+    public LottoBuyMoney(String input) {
+        this.amount = LottoBuyMoneyValidator.validateAmount(input);
     }
 
     public int getLottoCount() {

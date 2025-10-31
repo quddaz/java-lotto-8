@@ -1,4 +1,4 @@
-package lotto.domain.lotto;
+package lotto.domain.lotto.config;
 
 public enum LottoConfig {
     NUMBER_LENGTH(6),

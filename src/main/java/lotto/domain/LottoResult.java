@@ -7,16 +7,25 @@ import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
 
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class LottoResult {
-    private final EnumMap<LottoRank, Integer> rankCountMap;
+    private final Map<LottoRank, Integer> rankCountMap;
 
     public LottoResult(Lottos lottos, WinningLotto winningLotto) {
-        this.rankCountMap = new EnumMap<>(LottoRank.class);
+        this.rankCountMap = new HashMap<>();
+        generateEmptyRankMap();
         calculateResults(lottos, winningLotto);
         rankCountMap.remove(LottoRank.MISS);
+    }
+
+    private void generateEmptyRankMap() {
+        for (LottoRank rank : LottoRank.values()) {
+            rankCountMap.put(rank, 0);
+        }
     }
 
     private void calculateResults(Lottos lottos, WinningLotto winningLotto) {
@@ -30,6 +39,9 @@ public class LottoResult {
     public double calculateReward() {
         long totalReward = getTotalWinningMoney();
         int totalLottoCount = getTotalLottoCount();
+        if(totalLottoCount == 0) {
+            return 0.0;
+        }
         return  (double) totalReward / (totalLottoCount * LottoBuyConfig.LOTTO_PRICE.getValue()) * 100;
     }
 
@@ -38,10 +50,22 @@ public class LottoResult {
             .mapToLong(e -> e.getKey().getWinningMoney() * e.getValue())
             .sum();
     }
+
     private int getTotalLottoCount() {
         return rankCountMap.values().stream()
             .mapToInt(Integer::intValue)
             .sum();
+    }
+
+    public String getResultString() {
+        StringBuilder resultBuilder = new StringBuilder();
+        rankCountMap.keySet().stream()
+            .sorted((r1, r2) -> Integer.compare(r1.getMatchCount(), r2.getMatchCount()))
+            .forEach(rank -> {
+                String formattedResult = String.format(rank.getMatchFormat(), rankCountMap.get(rank));
+                resultBuilder.append(formattedResult).append("\n");
+            });
+        return resultBuilder.toString();
     }
 }
 

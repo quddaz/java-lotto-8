@@ -1,5 +1,8 @@
 package lotto.domain.buy;
 
+import lotto.exception.DomainExceptionMessage;
+import lotto.exception.LottoDomainException;
+
 public enum LottoBuyConfig {
     LOTTO_PRICE(1000);
 
@@ -12,6 +15,7 @@ public enum LottoBuyConfig {
     public int getValue() {
         return value;
     }
+
 
     public static boolean isValidLottoBuyAmount(int amount) {
         return amount > 0 && amount % LOTTO_PRICE.getValue() == 0;

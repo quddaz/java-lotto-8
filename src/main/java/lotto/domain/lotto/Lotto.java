@@ -1,5 +1,7 @@
 package lotto.domain.lotto;
 
+import lotto.domain.lotto.config.LottoPatternConfig;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,9 @@ public class Lotto {
     public String getNumbersAsString() {
         return numbers.stream()
             .map(String::valueOf)
-            .collect(Collectors.joining(", ", "[", "]"));
+            .collect(Collectors.joining(LottoPatternConfig.DEFAULT_DELIMITER.get()
+                , LottoPatternConfig.FORMAT_PREFIX.get()
+                , LottoPatternConfig.FORMAT_SUFFIX.get()));
     }
 
     public int getMatchCountRank(Lotto winningLotto) {

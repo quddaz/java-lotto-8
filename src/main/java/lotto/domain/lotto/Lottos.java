@@ -1,5 +1,6 @@
 package lotto.domain.lotto;
 
+import lotto.domain.lotto.config.LottoPatternConfig;
 import lotto.util.LottoNumberGenerator;
 
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ public class Lottos {
 
     private final LottoNumberGenerator lottoNumberGenerator;
     private final List<Lotto> lottos;
-    private static final String DELIMITER = "\n";
     public Lottos(int count, LottoNumberGenerator lottoNumberGenerator) {
         this.lottos = new ArrayList<>();
         this.lottoNumberGenerator = lottoNumberGenerator;
@@ -26,7 +26,7 @@ public class Lottos {
     public String lottoNumber() {
         return lottos.stream()
             .map(Lotto::getNumbersAsString)
-            .collect(Collectors.joining(DELIMITER));
+            .collect(Collectors.joining(LottoPatternConfig.LINE_DELIMITER.get()));
     }
 
     public List<LottoRank> getLottoRanks(WinningLotto winningLotto) {

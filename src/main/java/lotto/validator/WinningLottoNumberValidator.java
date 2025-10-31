@@ -1,6 +1,6 @@
 package lotto.validator;
 
-import lotto.domain.lotto.LottoConfig;
+import lotto.domain.lotto.config.LottoConfig;
 import lotto.exception.DomainExceptionMessage;
 import lotto.exception.LottoDomainException;
 

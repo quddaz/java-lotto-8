@@ -16,8 +16,8 @@ public class OutputView {
         System.out.println(lottoNumbers);
     }
 
-    public void printPrizeLottoMessage() {
-        System.out.println(OutputConfig.PRIZE_LOTTO_MESSAGE.get());
+    public void printWinningLottoMessage() {
+        System.out.println(OutputConfig.WINNING_LOTTO_MESSAGE.get());
     }
 
     public void printBonusNumberMessage() {
@@ -26,7 +26,7 @@ public class OutputView {
 
     public void printResultMessage(LottoResult lottoResult) {
         StringBuilder resultString = new StringBuilder(OutputConfig.STATISTICS_HEADER.get());
-
+        resultString.append(lottoResult.getResultString());
         System.out.print(resultString);
     }
 
