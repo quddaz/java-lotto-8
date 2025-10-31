@@ -1,7 +1,6 @@
 package lotto.domain.lotto;
 
 
-import lotto.domain.LottoRank;
 import lotto.domain.dto.RankCountDto;
 
 import java.util.Comparator;

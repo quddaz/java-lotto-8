@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
 public enum LottoRank {
     MISS(0, 0, ""),
