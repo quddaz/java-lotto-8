@@ -7,9 +7,9 @@ import lotto.exception.LottoDomainException;
 import java.util.List;
 import java.util.Set;
 
-public class WinningLottoNumberValidator {
+public class WinningLottoValidator {
 
-    private WinningLottoNumberValidator() {
+    private WinningLottoValidator() {
     }
 
     public static void validateWinningNumbers(List<Integer> winningNumbers) {

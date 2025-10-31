@@ -5,7 +5,7 @@ import lotto.domain.buy.LottoBuyMoney;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
 import lotto.generator.LottoNumberGenerator;
-import lotto.validator.WinningLottoNumberValidator;
+import lotto.validator.WinningLottoValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -42,18 +42,18 @@ public class LottoStarter {
 
     private Lottos generateLottos(LottoBuyMoney purchaseAmount) {
         Lottos lottos = new Lottos(purchaseAmount.getLottoCount(), lottoNumberGenerator);
-        outputView.printLottoNumbers(lottos.lottoNumber());
+        outputView.printLottoNumbers(lottos.getStringlottosNumber());
         return lottos;
     }
 
     private WinningLotto getWinningLotto() {
         outputView.printWinningLottoMessage();
         List<Integer> winningNumbersInput = WinningLotto.parseWinningNumbers(inputView.readInput());
-        WinningLottoNumberValidator.validateWinningNumbers(winningNumbersInput);
+        WinningLottoValidator.validateWinningNumbers(winningNumbersInput);
 
         outputView.printBonusNumberMessage();
         int bonusNumberInput = WinningLotto.parseBonusNumber(inputView.readInput());
-        WinningLottoNumberValidator.validateBonusNumber(bonusNumberInput, winningNumbersInput);
+        WinningLottoValidator.validateBonusNumber(bonusNumberInput, winningNumbersInput);
 
         return new WinningLotto(winningNumbersInput, bonusNumberInput);
     }

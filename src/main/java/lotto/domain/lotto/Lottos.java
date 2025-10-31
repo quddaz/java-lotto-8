@@ -24,7 +24,7 @@ public class Lottos {
             this.lottos.add(new Lotto(lottoNumberGenerator.generate()));
     }
 
-    public String lottoNumber() {
+    public String getStringlottosNumber() {
         return lottos.stream()
             .map(Lotto::getNumbersAsString)
             .collect(Collectors.joining(LottoPatternConfig.LINE_DELIMITER.get()));

@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.exception.DomainExceptionMessage;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,8 +11,6 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
-    private static final String ERROR_MESSAGE = "[ERROR]";
-
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -47,12 +46,44 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 구매_가격_예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
-            assertThat(output()).contains(ERROR_MESSAGE);
+            assertThat(output()).contains(DomainExceptionMessage.INVALID_PARSEABLE_NUMBER.message());
         });
     }
+    @Test
+    void 구매_가격_범위_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("0", "1,2,3,4,5,42", "7");
+            assertThat(output()).contains(DomainExceptionMessage.INVALID_PURCHASE_AMOUNT.message());
+        });
+    }
+
+    @Test
+    void 당첨_로또_숫자_갯수_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,42,45", "7");
+            assertThat(output()).contains(DomainExceptionMessage.INVALID_WINNING_NUMBER_SIZE.message());
+        });
+    }
+
+    @Test
+    void 보너스_숫자_범위_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,45", "0");
+            assertThat(output()).contains(DomainExceptionMessage.INVALID_LOTTO_NUMBER.message());
+        });
+    }
+
+    @Test
+    void 보너스_숫자_포멧_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,45", "a");
+            assertThat(output()).contains(DomainExceptionMessage.INVALID_NUMBER_FORMAT.message());
+        });
+    }
+
 
     @Override
     public void runMain() {
