@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +18,6 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-
     public String getNumbersAsString() {
         return numbers.stream()
             .map(String::valueOf)
