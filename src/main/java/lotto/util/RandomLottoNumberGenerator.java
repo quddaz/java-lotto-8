@@ -18,7 +18,9 @@ public class RandomLottoNumberGenerator implements LottoNumberGenerator {
 
     @Override
     public List<Integer> generate() {
-        return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_NUMBER_COUNT);
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_NUMBER_COUNT);
+        lotto.sort(Integer::compareTo);
+        return lotto;
     }
 
 }

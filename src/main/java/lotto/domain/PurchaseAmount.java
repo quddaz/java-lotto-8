@@ -23,7 +23,4 @@ public class PurchaseAmount {
         return amount / LOTTO_PRICE;
     }
 
-    public double getProfitsRate(int totalPrize) {
-        return (double) totalPrize / amount;
-    }
 }

@@ -1,7 +1,6 @@
 package lotto.config;
 
 import lotto.controller.LottoController;
-import lotto.domain.LottoMachine;
 import lotto.util.InputParser;
 import lotto.util.LottoNumberGenerator;
 import lotto.util.RandomLottoNumberGenerator;
@@ -13,8 +12,6 @@ public class AppConfig {
     private final OutputView outputView;
     private final LottoNumberGenerator lottoNumberGenerator;
     private final InputParser inputParser;
-
-    private final LottoMachine lottoMachine;
     private final LottoController lottoController;
 
     private static final int LOTTO_NUMBER_COUNT = 6;
@@ -25,8 +22,7 @@ public class AppConfig {
         this.outputView = new OutputView();
         this.lottoNumberGenerator = new RandomLottoNumberGenerator(LOTTO_NUMBER_COUNT, LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX);
         this.inputParser = new InputParser();
-        this.lottoMachine = new LottoMachine(lottoNumberGenerator);
-        this.lottoController = new LottoController(inputView, outputView, lottoMachine, inputParser);
+        this.lottoController = new LottoController(inputView, outputView, lottoNumberGenerator, inputParser);
     }
 
     public LottoController getLottoController() {
