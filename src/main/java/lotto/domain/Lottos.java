@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lottos {
     private final List<Lotto> lottos;
@@ -12,4 +13,9 @@ public class Lottos {
         return lottos.size();
     }
 
+    public String lottoNumber(String delimiter) {
+        return lottos.stream()
+            .map(Lotto::getNumbersAsString)
+            .collect(Collectors.joining(delimiter));
+    }
 }
