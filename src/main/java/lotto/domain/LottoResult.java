@@ -19,7 +19,6 @@ public class LottoResult {
         this.rankCountMap = new HashMap<>();
         generateEmptyRankMap();
         calculateResults(lottos, winningLotto);
-        rankCountMap.remove(LottoRank.MISS);
     }
 
     private void generateEmptyRankMap() {
@@ -60,6 +59,7 @@ public class LottoResult {
     public String getResultString() {
         StringBuilder resultBuilder = new StringBuilder();
         rankCountMap.keySet().stream()
+            .filter(rank -> rank != LottoRank.MISS)
             .sorted((r1, r2) -> Integer.compare(r1.getMatchCount(), r2.getMatchCount()))
             .forEach(rank -> {
                 String formattedResult = String.format(rank.getMatchFormat(), rankCountMap.get(rank));

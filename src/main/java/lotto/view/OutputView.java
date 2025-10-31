@@ -25,9 +25,7 @@ public class OutputView {
     }
 
     public void printResultMessage(LottoResult lottoResult) {
-        StringBuilder resultString = new StringBuilder(OutputConfig.STATISTICS_HEADER.get());
-        resultString.append(lottoResult.getResultString());
-        System.out.print(resultString);
+        System.out.print(OutputConfig.STATISTICS_HEADER.get() + lottoResult.getResultString());
     }
 
     public void printProfitMessage(double profit) {

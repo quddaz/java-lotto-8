@@ -6,7 +6,9 @@ import lotto.exception.LottoDomainException;
 import lotto.validator.WinningLottoNumberValidator;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningLotto {
     private final Lotto winningLotto;
@@ -32,11 +34,10 @@ public class WinningLotto {
         }
     }
     private static List<Integer> parseWinningNumbers(String input) {
-        return Arrays.stream(input.split(LottoPatternConfig.DEFAULT_DELIMITER.get()))
+        return Arrays.stream(input.split(LottoPatternConfig.DEFAULT_WINNING_DELIMITER.get()))
             .map(String::trim)
             .map(Integer::parseInt)
-            .sorted()
-            .toList();
+            .collect(Collectors.toList());
     }
 
     public LottoRank findMatchRank(Lotto lotto) {

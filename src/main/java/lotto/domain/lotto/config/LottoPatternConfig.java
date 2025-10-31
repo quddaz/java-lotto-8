@@ -1,7 +1,8 @@
 package lotto.domain.lotto.config;
 
 public enum LottoPatternConfig {
-    DEFAULT_DELIMITER(","),
+    DEFAULT_DELIMITER(", "),
+    DEFAULT_WINNING_DELIMITER(","),
     FORMAT_PREFIX("["),
     FORMAT_SUFFIX("]"),
     LINE_DELIMITER("\n");
