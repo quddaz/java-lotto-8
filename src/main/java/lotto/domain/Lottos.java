@@ -8,5 +8,4 @@ public class Lottos {
         this.lottos = List.copyOf(lottos);
     }
 
-
 }
