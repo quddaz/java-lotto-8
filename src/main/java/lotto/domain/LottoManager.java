@@ -1,16 +1,23 @@
-package lotto.domain;
+package lotto.domain.lotto;
 
-import lotto.domain.lotto.Lottos;
+import lotto.domain.lotto.Lotto;
 
-public class LottoManager {
-    private final Lottos lottos;
-    private static final String DEFAULT_DELIMITER = "\n";
-    public LottoManager(Lottos lottos) {
-        this.lottos = lottos;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Lottos {
+    private final List<Lotto> lottos;
+    public Lottos(List<Lotto> lottos) {
+        this.lottos = List.copyOf(lottos);
     }
 
-    public String lottoNumber() {
-        return lottos.lottoNumber(DEFAULT_DELIMITER);
+    public int size() {
+        return lottos.size();
     }
 
+    public String lottoNumber(String delimiter) {
+        return lottos.stream()
+            .map(Lotto::getNumbersAsString)
+            .collect(Collectors.joining(delimiter));
+    }
 }
