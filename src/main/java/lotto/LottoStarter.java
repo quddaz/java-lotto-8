@@ -4,9 +4,13 @@ import lotto.domain.LottoResult;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.buy.LottoBuyMoney;
 import lotto.domain.lotto.WinningLotto;
+import lotto.exception.LottoDomainException;
 import lotto.util.LottoNumberGenerator;
+import lotto.validator.WinningLottoNumberValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.List;
 
 
 public class LottoStarter {
@@ -21,12 +25,16 @@ public class LottoStarter {
     }
 
     public void run() {
-        LottoBuyMoney purchaseAmount = getPurchaseAmount();
-        Lottos lottos = generateLottos(purchaseAmount);
-        WinningLotto winningLotto = getWinningLotto();
+        try {
+            LottoBuyMoney purchaseAmount = getPurchaseAmount();
+            Lottos lottos = generateLottos(purchaseAmount);
+            WinningLotto winningLotto = getWinningLotto();
 
-        LottoResult lottoResult = calculateResult(lottos, winningLotto);
-        printResult(lottoResult);
+            LottoResult lottoResult = calculateResult(lottos, winningLotto);
+            printResult(lottoResult);
+        } catch (LottoDomainException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private LottoBuyMoney getPurchaseAmount() {
@@ -45,10 +53,14 @@ public class LottoStarter {
 
     private WinningLotto getWinningLotto() {
         outputView.printWinningLottoMessage();
-        String winningNumbersInput = inputView.readInput();
+        List<Integer> winningNumbersInput = WinningLotto.parseWinningNumbers(inputView.readInput());
+        WinningLottoNumberValidator.validateWinningNumbers(winningNumbersInput);
+
         outputView.printBonusNumberMessage();
-        String bonusNumberInput = inputView.readInput();
-        return WinningLotto.createFrom(winningNumbersInput, bonusNumberInput);
+        int bonusNumberInput = WinningLotto.parseBonusNumber(inputView.readInput());
+        WinningLottoNumberValidator.validateBonusNumber(bonusNumberInput, winningNumbersInput);
+
+        return new WinningLotto(winningNumbersInput, bonusNumberInput);
     }
 
     private LottoResult calculateResult(Lottos lottos, WinningLotto winningLotto) {
