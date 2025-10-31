@@ -1,8 +1,6 @@
 package lotto.domain.lotto;
 
-import lotto.domain.Rank;
-import lotto.domain.lotto.Lotto;
-import lotto.domain.lotto.LottoResult;
+import lotto.domain.LottoRank;
 import lotto.util.LottoNumberGenerator;
 
 import java.util.ArrayList;
@@ -39,14 +37,14 @@ public class LottoManager {
 
     public LottoResult getPrizeCount(List<Integer> prizeNumbers, int bonusNumber) {
 
-        EnumMap<Rank, Integer> rankCount = new EnumMap<>(Rank.class);
-        for (Rank rank : Rank.values()) {
+        EnumMap<LottoRank, Integer> rankCount = new EnumMap<>(LottoRank.class);
+        for (LottoRank rank : LottoRank.values()) {
             rankCount.put(rank, 0);
         }
 
 
         for (Lotto lotto : lottos) {
-            Rank rank = lotto.getMatchRank(prizeNumbers, bonusNumber);
+            LottoRank rank = lotto.getMatchRank(prizeNumbers, bonusNumber);
             rankCount.put(rank, rankCount.get(rank) + 1);
         }
 

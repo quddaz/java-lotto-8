@@ -1,8 +1,8 @@
 package lotto.domain.dto;
 
-import lotto.domain.Rank;
+import lotto.domain.LottoRank;
 
-public record RankCountDto(Rank rank, int count) {
+public record RankCountDto(LottoRank rank, int count) {
     public String getMatchFormat() {
         return rank.getMatchFormat();
     }

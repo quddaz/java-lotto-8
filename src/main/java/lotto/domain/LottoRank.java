@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public enum Rank {
+public enum LottoRank {
     MISS(0, 0, ""),
     FIFTH(3, 5_000, "3개 일치 (5,000원) -"),
     FOURTH(4, 50_000, "4개 일치 (50,000원) -"),
@@ -12,7 +12,7 @@ public enum Rank {
     private final int prizeMoney;
     private final String matchFormat;
 
-    Rank(int matchCount, int prizeMoney, String matchFormat) {
+    LottoRank(int matchCount, int prizeMoney, String matchFormat) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
         this.matchFormat = matchFormat;

@@ -1,7 +1,7 @@
 package lotto.domain.lotto;
 
 
-import lotto.domain.Rank;
+import lotto.domain.LottoRank;
 import lotto.domain.dto.RankCountDto;
 
 import java.util.Comparator;
@@ -18,7 +18,7 @@ public class LottoResult {
 
     private List<RankCountDto> filterAndSort(List<RankCountDto> dtos) {
         return dtos.stream()
-            .filter(dto -> dto.rank() != Rank.MISS)
+            .filter(dto -> dto.rank() != LottoRank.MISS)
             .sorted(Comparator.comparingInt(dto -> dto.rank().getMatchCount()))
             .toList();
     }

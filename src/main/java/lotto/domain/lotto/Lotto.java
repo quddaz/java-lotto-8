@@ -1,6 +1,6 @@
 package lotto.domain.lotto;
 
-import lotto.domain.Rank;
+import lotto.domain.LottoRank;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,19 +26,19 @@ public class Lotto {
             .collect(Collectors.joining(", ", "[", "]"));
     }
 
-    public Rank getMatchRank(List<Integer> prizeNumbers, int bonusNumber) {
+    public LottoRank getMatchRank(List<Integer> prizeNumbers, int bonusNumber) {
         long matchCount = numbers.stream()
             .filter(prizeNumbers::contains)
             .count();
 
         boolean bonusMatch = numbers.contains(bonusNumber);
 
-        if (matchCount == 6) return Rank.FIRST;
-        if (matchCount == 5 && bonusMatch) return Rank.SECOND;
-        if (matchCount == 5) return Rank.THIRD;
-        if (matchCount == 4) return Rank.FOURTH;
-        if (matchCount == 3) return Rank.FIFTH;
+        if (matchCount == 6) return LottoRank.FIRST;
+        if (matchCount == 5 && bonusMatch) return LottoRank.SECOND;
+        if (matchCount == 5) return LottoRank.THIRD;
+        if (matchCount == 4) return LottoRank.FOURTH;
+        if (matchCount == 3) return LottoRank.FIFTH;
 
-        return Rank.MISS;
+        return LottoRank.MISS;
     }
 }

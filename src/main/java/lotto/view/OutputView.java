@@ -1,11 +1,6 @@
 package lotto.view;
 
-import lotto.domain.Rank;
 import lotto.domain.lotto.LottoResult;
-
-import java.util.EnumMap;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
