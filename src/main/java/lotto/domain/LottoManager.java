@@ -6,4 +6,5 @@ public class LottoManager {
         this.lottos = lottos;
     }
 
+
 }

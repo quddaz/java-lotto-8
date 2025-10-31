@@ -8,4 +8,8 @@ public class Lottos {
         this.lottos = List.copyOf(lottos);
     }
 
+    public int size() {
+        return lottos.size();
+    }
+
 }
