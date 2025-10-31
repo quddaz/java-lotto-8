@@ -1,9 +1,9 @@
 package lotto;
 
-import lotto.domain.result.LottoResult;
 import lotto.domain.buy.LottoBuyMoney;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
+import lotto.domain.result.LottoResult;
 import lotto.generator.LottoNumberGenerator;
 import lotto.validator.WinningLottoValidator;
 import lotto.view.InputView;

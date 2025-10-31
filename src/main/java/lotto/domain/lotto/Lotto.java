@@ -12,7 +12,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        LottoValidator.validateLottoNumbers(numbers);;
+        LottoValidator.validateLottoNumbers(numbers);
         this.numbers = sortedNumbers(numbers);
     }
 

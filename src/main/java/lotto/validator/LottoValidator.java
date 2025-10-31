@@ -8,13 +8,15 @@ import java.util.List;
 import java.util.Set;
 
 public class LottoValidator {
-    private LottoValidator() {}
+    private LottoValidator() {
+    }
 
     public static void validateLottoNumbers(List<Integer> numbers) {
         validateLength(numbers);
         validateDuplicate(numbers);
         validateRange(numbers);
     }
+
     private static void validateDuplicate(List<Integer> numbers) {
         if (numbers.size() != Set.copyOf(numbers).size()) {
             throw new LottoDomainException(DomainExceptionMessage.DUPLICATE_LOTTO_NUMBER);
