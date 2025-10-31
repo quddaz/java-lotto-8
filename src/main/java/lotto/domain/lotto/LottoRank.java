@@ -21,6 +21,13 @@ public enum LottoRank {
         this.matchFormat = matchFormat;
     }
 
+    public static LottoRank findRank(int matchCount, boolean isBonusMatch) {
+        return Arrays.stream(values())
+            .filter(rank -> rank.isMatched(matchCount, isBonusMatch))
+            .findFirst()
+            .orElse(MISS);
+    }
+
     public int getMatchCount() {
         return matchCount;
     }
@@ -33,12 +40,6 @@ public enum LottoRank {
         return matchFormat;
     }
 
-    public static LottoRank findRank(int matchCount, boolean isBonusMatch) {
-        return Arrays.stream(values())
-            .filter(rank -> rank.isMatched(matchCount, isBonusMatch))
-            .findFirst()
-            .orElse(MISS);
-    }
     private boolean isMatched(int matchCount, boolean isBonusMatch) {
         if (this == SECOND) {
             return matchCount == this.matchCount && isBonusMatch;

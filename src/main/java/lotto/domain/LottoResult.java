@@ -6,7 +6,6 @@ import lotto.domain.lotto.LottoRank;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
 
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,10 +37,10 @@ public class LottoResult {
     public double calculateReward() {
         long totalReward = getTotalWinningMoney();
         int totalLottoCount = getTotalLottoCount();
-        if(totalLottoCount == 0) {
+        if (totalLottoCount == 0) {
             return 0.0;
         }
-        return  (double) totalReward / (totalLottoCount * LottoBuyConfig.LOTTO_PRICE.getValue()) * 100;
+        return (double) totalReward / (totalLottoCount * LottoBuyConfig.LOTTO_PRICE.getValue()) * 100;
     }
 
     private long getTotalWinningMoney() {

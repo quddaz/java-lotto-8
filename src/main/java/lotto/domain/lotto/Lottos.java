@@ -11,6 +11,7 @@ public class Lottos {
 
     private final LottoNumberGenerator lottoNumberGenerator;
     private final List<Lotto> lottos;
+
     public Lottos(int count, LottoNumberGenerator lottoNumberGenerator) {
         this.lottos = new ArrayList<>();
         this.lottoNumberGenerator = lottoNumberGenerator;
@@ -19,7 +20,7 @@ public class Lottos {
     }
 
     private void generateLottos(int count) {
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
             this.lottos.add(new Lotto(lottoNumberGenerator.generate()));
     }
 

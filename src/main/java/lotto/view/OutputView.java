@@ -1,7 +1,5 @@
 package lotto.view;
 
-import lotto.domain.LottoResult;
-
 public class OutputView {
 
     public void printPurchaseMessage() {
@@ -24,8 +22,8 @@ public class OutputView {
         System.out.println(OutputConfig.BONUS_NUMBER_MESSAGE.get());
     }
 
-    public void printResultMessage(LottoResult lottoResult) {
-        System.out.print(OutputConfig.STATISTICS_HEADER.get() + lottoResult.getResultString());
+    public void printResultMessage(String message) {
+        System.out.print(OutputConfig.STATISTICS_HEADER.get() + message);
     }
 
     public void printProfitMessage(double profit) {

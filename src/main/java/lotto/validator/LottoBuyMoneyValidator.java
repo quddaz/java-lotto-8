@@ -5,7 +5,7 @@ import lotto.exception.DomainExceptionMessage;
 import lotto.exception.LottoDomainException;
 
 public class LottoBuyMoneyValidator {
-    private LottoBuyMoneyValidator(){
+    private LottoBuyMoneyValidator() {
     }
 
     public static int validateAmount(String input) {

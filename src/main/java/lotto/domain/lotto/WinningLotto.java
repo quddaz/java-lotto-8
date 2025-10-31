@@ -26,7 +26,7 @@ public class WinningLotto {
 
     public static int parseBonusNumber(String input) {
         int bonusNumber;
-        try{
+        try {
             bonusNumber = Integer.parseInt(input.trim());
         } catch (NumberFormatException e) {
             throw new LottoDomainException(DomainExceptionMessage.INVALID_NUMBER_FORMAT);

@@ -11,12 +11,12 @@ public enum LottoConfig {
         this.value = value;
     }
 
-    public int getValue() {
-        return value;
-    }
-
     public static boolean isValidLottoNumber(int number) {
         return number >= MIN_NUMBER.getValue() && number <= MAX_NUMBER.getValue();
+    }
+
+    public int getValue() {
+        return value;
     }
 
 }

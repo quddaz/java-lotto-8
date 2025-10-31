@@ -1,8 +1,8 @@
 package lotto;
 
 import lotto.domain.LottoResult;
-import lotto.domain.lotto.Lottos;
 import lotto.domain.buy.LottoBuyMoney;
+import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
 import lotto.exception.LottoDomainException;
 import lotto.util.LottoNumberGenerator;
@@ -68,8 +68,7 @@ public class LottoStarter {
     }
 
     private void printResult(LottoResult lottoResult) {
-        outputView.printResultMessage(lottoResult);
-        double profit = lottoResult.calculateReward();
-        outputView.printProfitMessage(profit);
+        outputView.printResultMessage(lottoResult.getResultString());
+        outputView.printProfitMessage(lottoResult.calculateReward());
     }
 }
