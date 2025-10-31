@@ -1,5 +1,7 @@
 package lotto.util;
 
+import lotto.domain.lotto.LottoConfig;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,9 +17,10 @@ public class InputParser {
             .boxed()
             .toList();
     }
+
     // 숫자 범위 검증
     private int validateNumberFormat(int input) {
-        if (input < 1 || input > 45) {
+        if (!LottoConfig.isValidLottoNumber(input)) {
             throw new IllegalArgumentException("[ERROR] 숫자 형식이 올바르지 않습니다.");
         }
         return input;

@@ -24,19 +24,13 @@ public class Lotto {
             .collect(Collectors.joining(", ", "[", "]"));
     }
 
-    public LottoRank getMatchRank(List<Integer> prizeNumbers, int bonusNumber) {
-        long matchCount = numbers.stream()
-            .filter(prizeNumbers::contains)
+    public int getMatchCountRank(Lotto winningLotto) {
+        return (int) numbers.stream()
+            .filter(winningLotto.numbers::contains)
             .count();
+    }
 
-        boolean bonusMatch = numbers.contains(bonusNumber);
-
-        if (matchCount == 6) return LottoRank.FIRST;
-        if (matchCount == 5 && bonusMatch) return LottoRank.SECOND;
-        if (matchCount == 5) return LottoRank.THIRD;
-        if (matchCount == 4) return LottoRank.FOURTH;
-        if (matchCount == 3) return LottoRank.FIFTH;
-
-        return LottoRank.MISS;
+    public boolean isMatchBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 }

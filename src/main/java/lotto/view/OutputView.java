@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.domain.lotto.LottoResult;
+import lotto.domain.LottoResult;
 
 public class OutputView {
     private static final String PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
