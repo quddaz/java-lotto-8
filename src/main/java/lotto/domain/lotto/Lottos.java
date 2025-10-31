@@ -1,7 +1,7 @@
 package lotto.domain.lotto;
 
 import lotto.domain.lotto.config.LottoPatternConfig;
-import lotto.util.LottoNumberGenerator;
+import lotto.generator.LottoNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,15 +1,12 @@
 package lotto.config;
 
 import lotto.LottoStarter;
-import lotto.util.LottoNumberGenerator;
-import lotto.util.RandomLottoNumberGenerator;
+import lotto.generator.LottoNumberGenerator;
+import lotto.generator.RandomLottoNumberGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class AppConfig {
-    private static final int LOTTO_NUMBER_COUNT = 6;
-    private static final int LOTTO_NUMBER_MIN = 1;
-    private static final int LOTTO_NUMBER_MAX = 45;
     private final InputView inputView;
     private final OutputView outputView;
     private final LottoNumberGenerator lottoNumberGenerator;
@@ -18,7 +15,7 @@ public class AppConfig {
     public AppConfig() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.lottoNumberGenerator = new RandomLottoNumberGenerator(LOTTO_NUMBER_COUNT, LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX);
+        this.lottoNumberGenerator = new RandomLottoNumberGenerator();
         this.lottoStarter = new LottoStarter(inputView, outputView, lottoNumberGenerator);
     }
 

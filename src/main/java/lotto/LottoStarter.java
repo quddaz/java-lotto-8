@@ -5,7 +5,7 @@ import lotto.domain.buy.LottoBuyMoney;
 import lotto.domain.lotto.Lottos;
 import lotto.domain.lotto.WinningLotto;
 import lotto.exception.LottoDomainException;
-import lotto.util.LottoNumberGenerator;
+import lotto.generator.LottoNumberGenerator;
 import lotto.validator.WinningLottoNumberValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
