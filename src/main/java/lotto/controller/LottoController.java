@@ -1,8 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.lotto.LottoManager;
-import lotto.domain.PurchaseAmount;
-import lotto.domain.lotto.LottoResult;
+import lotto.domain.LottoMoney;
 import lotto.util.InputParser;
 import lotto.util.LottoNumberGenerator;
 import lotto.view.InputView;
@@ -26,7 +25,7 @@ public class LottoController {
 
     public void run() {
         outputView.printPurchaseMessage();
-        PurchaseAmount purchaseAmount = new PurchaseAmount(inputParser.parseToInt(inputView.readInput()));
+        LottoMoney purchaseAmount = new LottoMoney(inputParser.parseToInt(inputView.readInput()));
         LottoManager lottoManager = new LottoManager(purchaseAmount.getLottoCount(), lottoNumberGenerator);
 
         outputView.printPurchasedLottoMessage(purchaseAmount.getLottoCount());
